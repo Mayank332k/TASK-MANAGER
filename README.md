@@ -1,16 +1,76 @@
-# React + Vite
+# 📝 Task Manager (Upgraded Todo App)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is an **upgraded version of my earlier Todo app**, which initially had very basic features and limited control.
 
-Currently, two official plugins are available:
+In this version, I **rebuilt the core logic from scratch**, focusing more on:
+- proper state handling
+- clean data flow
+- task filtering
+- real production deployment
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project helped me deeply understand how React apps actually work in real-world scenarios.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+👉 Try the app here:  
+**https://mayank332k.github.io/task-manager/**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Features
+
+- Add new tasks
+- Mark tasks as completed
+- Delete tasks
+- Filter tasks:
+  - **All**
+  - **Completed**
+- Clean and minimal UI
+- Fully responsive
+- Deployed on **GitHub Pages**
+
+---
+
+## 🧠 What I Learned From This Project
+
+- How state flows between components
+- Proper use of `useState` for real logic (not just demos)
+- Filtering data instead of mutating it
+- Debugging wiring issues (props, callbacks, ids)
+- Difference between **development** and **production builds**
+- Deploying a React (Vite) app correctly on GitHub Pages
+
+This project cleared many confusions I had earlier about React logic and deployment.
+
+---
+
+## 🔧 Tech Stack
+
+- React (with Vite)
+- JavaScript (ES6+)
+- CSS
+- Git & GitHub
+- GitHub Pages (for deployment)
+
+---
+
+## 🛠️ Work In Progress
+
+- **Active tasks filter** is currently under development  
+  (will be added in the next update 🚧)
+
+---
+
+## 📌 Note
+
+This app is not just about UI.  
+The main focus was **logic, wiring, and real-world behavior** of a React application.
+
+---
+
+## 👤 Author
+
+**Mayank Singh**  
+Learning React by building, breaking, fixing, and shipping 🚀
