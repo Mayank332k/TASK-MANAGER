@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Parent from "./component/Parent";
 import DottedHeader from "./component/Welcome";
 import Header from "./component/Header";
@@ -12,13 +12,25 @@ function App() {
   const [data, setdata] = useState([]);
   const [choice, setchoice] = useState("all");
 
-  const addtask = (text) => {
-    {
-      if (text.length === 0) {
-        alert("Enter a valid value 🫂...");
-        return;
-      }
+  // Load tasks from localStorage on first render
+  useEffect(() => {
+    const savedData = localStorage.getItem("tasks");
+    if (savedData) {
+      setdata(JSON.parse(savedData));
     }
+  }, []);
+
+  // Save tasks to localStorage whenever data changes
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(data));
+  }, [data]);
+
+  const addtask = (text) => {
+    if (text.length === 0) {
+      alert("Enter a valid value 🫂...");
+      return;
+    }
+
     setdata([
       // data and values declared here!!! // menas the structure of data!
       ...data,
