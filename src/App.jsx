@@ -12,6 +12,17 @@ function App() {
   const [data, setdata] = useState([]);
   const [choice, setchoice] = useState("all");
 
+  useEffect(() => {
+    fetch("http://10.151.252.138:3000/tasks")
+      .then((res) => res.json())
+      .then((data) => {
+        setdata(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
   // Load tasks from localStorage on first render
   useEffect(() => {
     const savedData = localStorage.getItem("tasks");
@@ -20,26 +31,34 @@ function App() {
     }
   }, []);
 
-  // Save tasks to localStorage whenever data changes
+  //Save tasks to localStorage whenever data changes-
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(data));
   }, [data]);
 
-  const addtask = (text) => {
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  const addtask = async (text) => {
     if (text.length === 0) {
       alert("Enter a valid value 🫂...");
       return;
     }
 
-    setdata([
-      // data and values declared here!!! // menas the structure of data!
-      ...data,
-      {
-        id: Date.now(),
-        text: text,
-        completed: false,
-      },
-    ]);
+    try {
+      const res = await fetch("http://10.151.252.138:3000/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text }),
+      });
+
+      const newTask = await res.json();
+
+      setdata([...data, newTask]);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   function toggleTask(id) {
@@ -50,8 +69,21 @@ function App() {
     );
   }
 
-  const deleteTask = (id) => {
-    setdata(data.filter((task) => task.id !== id));
+  const deleteTask = async (id) => {
+    try {
+      const res = await fetch(`http://10.151.252.138:3000/tasks/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        console.log("Delete failed");
+        return;
+      }
+
+      setdata(data.filter((task) => task.id !== id));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const filteredData =
